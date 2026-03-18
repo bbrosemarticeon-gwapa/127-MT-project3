@@ -1,0 +1,363 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    line-height: 1.88889;
+    color: #4b4b4b;
+    
+    /* gradient + image */
+    background: 
+        url('map.jpg') no-repeat center center fixed;
+    
+    background-size: cover;       /* cover whole screen */
+    overflow-x: hidden;
+    transition: background 1s ease;
+}
+/* LINKS */
+a:link, a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+a:link { color: #181817; }
+a:visited { color: #b0a8d3; }
+a:hover, a:focus, a:active {
+    color: #5d4f8b;
+    text-decoration: underline;
+    transform: translateY(-2px);
+}
+
+.page-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 50px 40px;
+
+    /* parchment color */
+    background: #f5e6c8;
+
+    /* old paper texture effect */
+    background-image: url("paper-texture.jpg");
+    background-size: cover;
+
+    /* aged border */
+    border: 8px solid #8b5a2b;
+
+    /* curved book page corners */
+    border-radius: 10px;
+
+    /* inner shadow (old page effect) */
+    box-shadow:
+        inset 0 0 40px rgba(0,0,0,0.35),
+        0 10px 30px rgba(0,0,0,0.3);
+
+    /* classic book typography */
+    font-family: "Georgia", "Times New Roman", serif;
+
+    position: relative;
+
+    display: flex;
+    flex-wrap: wrap; /* fixed your typo (w rap) */
+    gap: 20px;
+}
+
+.book-video{
+    width: 100%;
+    height: 500px; /* adjust height if needed */
+    overflow: hidden;
+}
+
+.book-video img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* makes the image cover the container */
+}
+@media (max-width: 1024px) {
+    .page-wrapper {
+        max-width: 95%;
+        padding: 20px;
+        flex-direction: column; /* stack elements on smaller screens */
+    }
+}
+#zen-intro header{
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background video */
+.header-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Title in front of video */
+#zen-intro header h1,
+#zen-intro header h2{
+    position: relative;
+    z-index: 2;
+    color: rgb(248, 241, 179);
+    text-align: center;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+}
+header h1{
+    font-size:80px;
+    font-weight:900;
+    letter-spacing:5px;
+    color:#ccc;
+    text-transform:uppercase;
+    text-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+header h2{
+    font-size:24px;
+    color:#aaa;
+}
+
+
+/* SUMMARY */
+.summary {
+    width: 160px;
+    margin: 20px 20px 20px 0;
+    float: left;
+    opacity: 0;
+    animation: fadeInLeft 1s ease forwards;
+    animation-delay: 0.5s;
+}
+.summary p {
+    font: italic 1.1em/2.2 Georgia;
+    text-align: center;
+}
+
+/* PREAMBLE & CONTENT */
+.preamble {
+    flex: 1;
+    padding: 0 10px;
+    opacity: 0;
+    animation: fadeInRight 1s ease forwards;
+    animation-delay: 0.7s;
+}
+.supporting {
+    padding-left: 10px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.9s;
+}
+
+.sidebar {
+    width: 220px;
+    position: fixed;
+    top: 150px;
+    right: -40px; /* slightly outside the body */
+
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    color: #fcff69;
+
+    /* WOOD / SCROLL BACKGROUND */
+    background: url("scrool.jpg");
+    background-size: cover;
+    background-position: center;
+
+    padding: 30px 25px;
+
+    /* SCROLL SHAPE */
+    border-radius: 40px 40px 40px 40px;
+    border: 3px solid #7d775c;
+
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 1s ease forwards;
+    animation-delay: 1s;
+}
+
+/* SCROLL TOP ROLL */
+.sidebar::before{
+    content:"";
+    position:absolute;
+    top:-15px;
+    left:10px;
+    width:200px;
+    height:20px;
+    background:#8b5a2b;
+    border-radius:50%;
+}
+
+/* SCROLL BOTTOM ROLL */
+.sidebar::after{
+    content:"";
+    position:absolute;
+    bottom:-15px;
+    left:10px;
+    width:200px;
+    height:20px;
+    background:#8b5a2b;
+    border-radius:50%;
+}
+/* HEADINGS */
+.sidebar h3 {
+    margin: 12px 0 6px 0;
+}
+
+.sidebar h3.select { color: #f14527; font-weight: bold; }
+.sidebar h3.archives { color: #f14527; margin-top: 25px; font-weight: bold; }
+.sidebar h3.resources { color: #f14527; margin-top: 25px; font-weight: bold; }
+
+/* LIST STYLE */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 5px 0;
+    margin-bottom: 5px;
+    line-height: 1.3em;
+    transition: all 0.3s ease;
+}
+
+.sidebar li a:hover {
+    color: #faea58;
+    transform: translateX(5px);
+}
+
+/* ANIMATION */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #555753;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.5s;
+}
+
+/* Audio Container */
+.audio-container {
+    position: fixed;      /* Always visible */
+    bottom: 20px;         /* 20px from bottom */
+    right: 20px;          /* 20px from right */
+    background-color: rgba(255, 255, 255, 0.85); /* subtle white background */
+    padding: 10px 15px;   /* space around audio player */
+    border-radius: 10px;  /* rounded corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* elegant shadow */
+    font-family: 'Georgia', serif; /* match Zen Garden style */
+    z-index: 1000;        /* stay above other content */
+}
+
+/* Optional: Hide default outline when focused */
+.audio-container audio:focus {
+    outline: none;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInBg {
+    0% { background-size: 90%; }
+    100% { background-size: 100%; }
+}
+@keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes slideRight { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fadeInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bounceIn { 0% { transform: scale(0.5); opacity:0; } 60% { transform: scale(1.1); opacity:1; } 100% { transform: scale(1); } }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .page-wrapper {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar {
+        position: relative;
+        top: 0;
+        width: 90%;
+        margin-top: 20px;
+    }
+    .summary { float: none; width: 90%; text-align: center; }
+}
+/* Common style for extras */
+.extra1, .extra2, .extra3, .extra4, .extra5, .extra6{
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none; /* so they don't block clicks */
+    z-index: -1;
+
+    /* animation */
+    animation: floatAnime 6s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes floatAnime{
+    0%{
+        transform: translateY(0px) rotate(0deg);
+    }
+    25%{
+        transform: translateY(-10px) rotate(2deg);
+    }
+    50%{
+        transform: translateY(0px) rotate(0deg);
+    }
+    75%{
+        transform: translateY(10px) rotate(-2deg);
+    }
+    100%{
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* Luffy */
+.extra1{
+    background-image: url("1.png");
+    top: 50px;
+    left: 40px;
+    animation-delay: 0s;
+}
+
+/* Zoro */
+.extra2{
+    background-image: url("2.png");
+    top: 300px;
+    left: 20px;
+    animation-delay: 1s;
+}
+
+/* Nami */
+.extra3{
+    background-image: url("4.png");
+    bottom: 100px;
+    left: 60px;
+    animation-delay: 2s;
+}
